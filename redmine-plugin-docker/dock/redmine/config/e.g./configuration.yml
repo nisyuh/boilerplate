@@ -1,0 +1,10 @@
+default:
+  email_delivery:
+    delivery_method: :smtp
+    smtp_settings:
+      address: <%= ENV.fetch 'SMTP_HOST', 'localhost' %>
+      port: <%= ENV.fetch 'SMTP_PORT', 25 %>
+
+production:
+
+development:

@@ -1,0 +1,15 @@
+<% u = URI.parse ENV.fetch 'DATABASE_URL' %>
+production:
+  url: <%= u.to_s %>
+  # Tell adapter to Redmine, see Gemfile
+  adapter: <%= u.scheme %>
+
+development:
+  url: <%= u.to_s %>
+  # Tell adapter to Redmine, see Gemfile
+  adapter: <%= u.scheme %>
+
+test:
+  url: <%= u.to_s %>
+  # Tell adapter to Redmine, see Gemfile
+  adapter: <%= u.scheme %>
