@@ -1,0 +1,5 @@
+RAILS_ENV=development
+DATABASE_URL=postgresql://postgres:pgpasswd@pg:5432/red_devel
+SMTP_HOST=mhog
+SMTP_PORT=1025
+REDMINE_LANG=ja

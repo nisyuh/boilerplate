@@ -1,0 +1,54 @@
+version: '3.9'
+
+networks:
+  backend:
+
+services:
+
+  postgres:
+    image: postgres:9.6
+    #environment:
+      #POSTGRES_USER: postgres
+      #POSTGRES_PASSWORD:
+      #PGDATA: /var/lib/postgresql/data
+      #POSTGRES_INITDB_ARGS:
+      #TZ:
+    env_file:
+      - envr/postgres
+    networks:
+      backend:
+        aliases:
+          - pg
+
+  mailhog:
+    image: mailhog/mailhog:v1.0.1
+    networks:
+      backend:
+        aliases:
+          - mhog
+    ports:
+      - '127.0.0.1:8025:8025'
+
+  redmine:
+    build:
+      context: dock/rails5-pgsql
+      args:
+        BUNDLE_PATH: /usr/local/bundle
+        RAILS_HOME: /home/app/redmine
+    #environment:
+    #  BUNDLE_PATH: /usr/local/bundle
+    #  RAILS_HOME: /home/app/redmine
+    #  RAILS_ENV: development
+    #  DATABASE_URL: driver://username:password@host:port/dbname
+    #  SMTP_HOST: mhog
+    #  SMTP_PORT: 1025
+    env_file:
+      - envr/redmine
+    networks:
+      backend:
+    ports:
+      - '127.0.0.1:3300:3000'
+    stdin_open: true
+    tty: true
+    depends_on:
+      - postgres

@@ -1,0 +1,6 @@
+envr/*
+!envr/e.g.
+
+.env
+
+redmine/
