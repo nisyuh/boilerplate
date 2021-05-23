@@ -83,8 +83,8 @@ Those might not be sufficient or necessary for you, so be cutomized in your own 
 
 - `rake task=`:
 
-    Execute bundle exec command on a Redmine container.
-    Require a task name to be appended to bundle exec rake entry,
+    Execute `bundle exec rake` command on a Redmine container.
+    Require a task name to be appended to `bundle exec rake` entry,
     e.g., `make rake task=log:clear` executes `bundle exec rake log:clear`.
 
 - `rails cmd=`:
