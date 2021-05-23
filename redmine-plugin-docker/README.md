@@ -60,8 +60,8 @@ Those might not be sufficient or necessary for you, so be cutomized in your own 
 
 - `reinit`:
 
-    Re-initialization, which expects correcting Redmine version by hand in `redmine/`,
-    or changes on docker composition.
+    Re-initialization, which reflects a corrected Redmine version by hand in `redmine/`,
+    or changes on docker composition, etc., after the first `init`.
 
 - `env`:
 
