@@ -28,9 +28,15 @@ down:
 
 drop:
 	docker-compose down --rmi all --volumes --remove-orphans
+	@make sync-down
 
 drop-volume:
 	docker-compose down --volumes --remove-orphans
+	@make sync-down
+
+restart:
+	@make down
+	@make up
 
 sync-up:
 	docker-sync start
@@ -54,10 +60,13 @@ rails:
 	docker-compose exec redmine bundle exec rails $(cmd)
 
 rails-c:
-	docker-compose exec redmine bundle exec rails console
+	@make rails cmd=console
 
 rails-s:
-	docker-compose exec redmine bundle exec rails server --binding=0.0.0.0
+	@make rails cmd="server --binding=0.0.0.0"
+
+rails-ss:
+	@make sync rails-s
 
 red-source:
 	@make red-clone red-switch red-conf
@@ -66,11 +75,11 @@ red-setup:
 	@make bundle-install red-gen-secret db-init
 
 red-clone:
-	git clone https://github.com/redmine/redmine.git
+	[[ -d redmine/.git ]] || git clone https://github.com/redmine/redmine.git
 
 red-switch:
-ifneq ($(strip $(git_brabch)),)
-	cd redmine && git switch $(strip $(git_brabch))
+ifneq ($(strip $(git_branch)),)
+	cd redmine && git switch $(strip $(git_branch))
 else ifneq ($(strip $(git_tag)),)
 	cd redmine && git switch -c $(strip $(git_tag)) refs/tags/$(strip $(git_tag))
 else ifneq ($(strip $(git_commit)),)
@@ -106,20 +115,20 @@ endif
 
 plug-new-model:
 ifneq ($(strip $(plug)),)
-  ifneq ($(strip $(model)),)
+ifneq ($(strip $(model)),)
 	@make rails cmd="generate redmine_plugin_model $(plug) $(model)"
-  else
+else
 	$(error model profile is not set)
-  endif
+endif
 else
 	$(error plugin name is not set)
 endif
 
 plug-new-ctrl:
 ifneq ($(strip $(plug)),)
-  ifneq ($(strip $(ctrl)),)
+ifneq ($(strip $(ctrl)),)
 	@make rails cmd="generate redmine_plugin_controller $(plug) $(ctrl)"
-  else
+else
 	$(error controller profile is not set)
 endif
 else
