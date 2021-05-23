@@ -3,7 +3,7 @@ init:
 	@make env build up
 	@make red-setup
 
-rebuild:
+renit:
 	@make red-conf
 	@make env build up
 	@make red-setup
