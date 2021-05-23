@@ -2,5 +2,7 @@ envr/*
 !envr/e.g.
 
 .env
+.dock/
+.docker-sync/
 
 /redmine/
