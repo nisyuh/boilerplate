@@ -1,4 +1,4 @@
-A boilerplate to develop Redmine plugins.
+A boilerplate to develop [Redmine][redmine] plugins.
 
 
 # Requirements
@@ -125,6 +125,7 @@ Those might not be sufficient or necessary for you, so be cutomized in your own 
 [ruby-dockhub]: https://hub.docker.com/_/ruby
 [potgres-dockhub]: https://hub.docker.com/_/postgres
 [mailhog-dockhub]: https://hub.docker.com/r/mailhog/mailhog
+[redmine]: https://www.redmine.org/
 [plug-new]: https://www.redmine.org/projects/redmine/wiki/plugin_tutorial#Creating-a-new-Plugin
 [plug-new-model]: https://www.redmine.org/projects/redmine/wiki/plugin_tutorial#Generating-a-model
 [plug-new-ctrl]: https://www.redmine.org/projects/redmine/wiki/plugin_tutorial#Generating-a-controller
