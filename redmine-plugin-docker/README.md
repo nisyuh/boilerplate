@@ -105,12 +105,12 @@ Those might not be sufficient or necessary for you, so be cutomized in your own 
     Create a set of new plugin's sources, see [the document][plug-new].
     Require a plugin name.
 
-- `plug-new-model name= model=`:
+- `plug-new-model plug= model=`:
 
     Create a set of new plugin's model sources, see [the document][plug-new-model].
     Require a plugin name and model profile.
 
-- `plug-new-ctrl name= ctrl=`:
+- `plug-new-ctrl plug= ctrl=`:
 
     Create a set of new plugin's controller sources, see [the document][plug-new-ctrl].
     Require a plugin name and controller profile.
