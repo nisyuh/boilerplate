@@ -79,13 +79,21 @@ red-clone:
 
 red-switch:
 ifneq ($(strip $(git_branch)),)
-	cd redmine && git switch $(strip $(git_branch))
+c = $(strip $(git_branch))
+r =
 else ifneq ($(strip $(git_tag)),)
-	cd redmine && git switch -c $(strip $(git_tag)) refs/tags/$(strip $(git_tag))
+c = $(strip $(git_tag))
+r = refs/tags/$(c)
 else ifneq ($(strip $(git_commit)),)
-	cd redmine && git switch -c $(strip $(git_commit))
-else
+c = $(strip $(git_commit))
+r = $(c)
+endif
+
+red-switch:
+ifeq ($(c),)
 	$(error git commitish name is not set)
+else
+	cd redmine && if git show-ref --quiet --heads $(c); then git switch $(c); else git switch -c $(c) $(r); fi
 endif
 
 red-conf:
