@@ -45,7 +45,7 @@ We publish ports for test use.
 
 ## Volumes (minimally noting)
 
-Remember the directory `redmine/` synchronizes with the source in the Redmine container including plugins by docker's bind mounting.
+Remember the directory `redmine/` synchronizes with the source in the Redmine container including plugins.
 
 ## Command `make` Examples
 
